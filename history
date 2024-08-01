@@ -1,0 +1,19 @@
+  87  kubectl get svc/portworx-service -o yaml -n portworx                                                     
+   88  kubectl expose service svc/portworx-service -n portworx --port=9001 --target-port=9020 --name=mysvc --nam
+espace=portworx --dry-run=client -o yaml                                                                        
+   89  kubectl expose service portworx-service --type=NodePort -n portworx --port=9001 --target-port=9020 --name
+=mysvc --namespace=portworx --dry-run=client -o yaml    
+   90  kubectl expose service portworx-service --type=NodePort -n portworx --port=9001 --target-port=9020 --name
+=mysvc --namespace=portworx --dry-run=client --node-port=32017                                                  
+   91  kubectl expose service portworx-service --type=NodePort -n portworx --port=9001 --target-port=9020 --name
+=mysvc --namespace=portworx --dry-run=client --nodeport=32017
+
+
+    (kubectl version --short 2>&1 || kubectl version)| awk -Fv '/Server Version: / {print $3}'
+   23  kubectl apply -f 'https://install.portworx.com/3.1?comp=pxoperator&kbver=1.28.10&ns=portworx'
+   24  kubectl apply -f 'https://install.portworx.com/3.1?operator=true&mc=false&kbver=1.28.10&ns=portworx&oem=e
+sse&user=ae751545-cef5-4ded-8e77-60aecf5c63b0&b=true&iop=6&c=px-cluster-0a824324-42cd-4527-a6a8-4cca8ce556d8&sto
+rk=true&csi=true&mon=true&tel=true&st=k8s&promop=true'
+   25  kubectl label nodes portworx01 portworx02 portworx03 px/metadata-node=true
+
+    
