@@ -1,0 +1,14 @@
+write-kubeconfig-mode: "0644"
+
+node-label:
+  - "role=control-plane"
+
+cni: canal
+
+node-name: portworx02
+
+token-file: /etc/rancher/rke2/token-file
+server: https://212.227.200.164:9345
+
+kube-controller-manager-arg:
+  - "secure-port=10252"
